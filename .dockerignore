@@ -1,0 +1,9 @@
+.venv/
+.git/
+.github/
+tests/
+reports/
+examples/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
