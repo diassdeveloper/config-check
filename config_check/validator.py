@@ -16,12 +16,3 @@ def validate_config(data: dict, rules: dict[str, type]) -> list[str]:
     return errors
 
 
-rules = {
-    "port": int,
-    "debug": bool,
-}
-
-data = {"port": 8080, "debug": True}
-
-
-print(validate_config(data, rules))

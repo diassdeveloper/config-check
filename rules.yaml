@@ -1,0 +1,2 @@
+port: int
+debug: bool
