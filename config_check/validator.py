@@ -11,9 +11,7 @@ def validate_config(data: dict, rules: dict[str, type]) -> list[str]:
         if field not in data:
             errors.append(f"campo obrigatório ausente: {field}")
         elif not _matches_type(data[field], expected_type):
-            errors.append(
-                f"campo '{field}' deve ser do tipo {expected_type.__name__}"
-            )
+            errors.append(f"campo '{field}' deve ser do tipo {expected_type.__name__}")
 
     return errors
 
@@ -23,10 +21,7 @@ rules = {
     "debug": bool,
 }
 
-data = {
-    "port": 8080, 
-    "debug": True
-    }
+data = {"port": 8080, "debug": True}
 
 
 print(validate_config(data, rules))

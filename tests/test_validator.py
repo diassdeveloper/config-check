@@ -1,27 +1,25 @@
 from config_check.validator import validate_config
 
-RULES = {
-    "port": int,
-    "debug": bool
-}
+RULES = {"port": int, "debug": bool}
+
 
 def test_valid_date_returns() -> None:
-    data = {
-        "port": 8080,
-        "debug": True
-    }
+    data = {"port": 8080, "debug": True}
 
     assert validate_config(data, RULES) == []
+
 
 def test_missing_field_is_reported() -> None:
     errors = validate_config({"port": 8080}, RULES)
 
     assert errors == ["campo obrigatório ausente: debug"]
 
+
 def test_wrong_type_is_reported() -> None:
     errors = validate_config({"port": "8080", "debug": True}, RULES)
 
     assert errors == ["campo 'port' deve ser do tipo int"]
+
 
 def test_multiple_problems_are_all_reported() -> None:
     errors = validate_config({"port": "8080"}, RULES)
