@@ -1,7 +1,7 @@
 # config-check
 
 ![CI](https://github.com/diassdeveloper/config-check/actions/workflows/ci.yml/badge.svg)
-![CD](https://github.com/diassdeveloper/config-check/actions/workflows/cd.yml/badge.svg)
+![CD](https://github.com/diassdeveloper/config-check/actions/workflows/cd-status.yml/badge.svg)
 
 Validador de arquivos de configuração `.json` e `.yaml`. Ele varre uma pasta,
 confere cada arquivo contra regras de campos e tipos, gera um relatório em JSON
@@ -110,6 +110,8 @@ lint com `ruff`, testes com `pytest` e uma execução real da ferramenta sobre
 ## CD
 
 O workflow `.github/workflows/cd.yml` é acionado quando uma tag de versão no formato `v*.*.*` é enviada ao GitHub (por exemplo, `v0.2.2`). Primeiro, ele executa o workflow de CI reutilizável; o job de publicação só continua se o CI terminar com sucesso (`needs: ci`).
+
+A badge de CD acompanha o workflow auxiliar `.github/workflows/cd-status.yml`. Como o CD principal é acionado por tags, esse workflow auxiliar registra o resultado de cada execução concluída na branch padrão, permitindo que a badge represente o resultado da publicação mais recente sem alterar o gatilho de release.
 
 Depois, o pipeline constrói a imagem Docker e publica no GitHub Container Registry (GHCR), usando a versão da tag (sem o prefixo `v`, por exemplo, `0.2.2`) e também a tag `latest`. Assim, cada release bem-sucedida disponibiliza uma nova versão da imagem para uso.
 
