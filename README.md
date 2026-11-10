@@ -1,7 +1,7 @@
 # config-check
 
 ![CI](https://github.com/diassdeveloper/config-check/actions/workflows/ci.yml/badge.svg)
-![CD](https://github.com/diassdeveloper/config-check/actions/workflows/cd-status.yml/badge.svg)
+![CD](https://github.com/diassdeveloper/config-check/actions/workflows/cd-status.yml/badge.svg?label=CD)
 
 Validador de arquivos de configuração `.json` e `.yaml`. Ele varre uma pasta,
 confere cada arquivo contra regras de campos e tipos, gera um relatório em JSON
