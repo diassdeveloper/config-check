@@ -1,0 +1,19 @@
+name: CD Status
+
+on:
+  workflow_run:
+    workflows: ["CD"]
+    types: [completed]
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reflect CD result
+        env:
+          CD_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+        run: |
+          if [ "$CD_CONCLUSION" != "success" ]; then
+            echo "CD workflow concluded with: $CD_CONCLUSION"
+            exit 1
+          fi
